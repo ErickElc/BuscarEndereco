@@ -15,23 +15,14 @@ function PegarCep(url,callback){
         return '';
     }
     else{
-        const teste = fetch(url).then((res, rej)=>{
-            if(!res.ok){
-               
-                alert("Erro Na operação")
-                return rej = true;
-            }
-            else
-                rej = false;
-                return res.json()
-        }).then((dados)=>{
+        fetch(url).then((res)=>{return res.json()}).then((dados)=>{
             let DadosLocal = [dados.localidade,dados.bairro,dados.logradouro,
             dados.complemento,dados.uf];
             for(let i in DadosLocal){
                 if(DadosLocal[i] == undefined)
                     return alert("Error")
                 else
-                callback = PrintScreen(DadosLocal[4],DadosLocal[0],DadosLocal[1],DadosLocal[2],DadosLocal[3]);
+                    callback = PrintScreen(DadosLocal[4],DadosLocal[0],DadosLocal[1],DadosLocal[2],DadosLocal[3]);
             }
          })
      }
