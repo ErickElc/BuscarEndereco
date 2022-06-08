@@ -1,31 +1,26 @@
 // let botao = document.getElementById("Submit");
 function PuxarValores(){
     let Input = document.getElementById("InputCep").value;
-    if(Input > 9999999){
+    if(Input != ''){
         let UrlFinal = `https://viacep.com.br/ws/${Input}/json`;
         return UrlFinal;
+
     }
     else{
-        return false;
+        alert('Digite Algo!')
     }
 }
 function PegarCep(url,callback){
-    if(url == false){
-        alert("Cep Invalido");
-        return '';
-    }
-    else{
-        fetch(url).then((res)=>{return res.json()}).then((dados)=>{
-            let DadosLocal = [dados.localidade,dados.bairro,dados.logradouro,
-            dados.complemento,dados.uf];
-            for(let i in DadosLocal){
-                if(DadosLocal[i] == undefined)
-                    return alert("Error")
-                else
-                    callback = PrintScreen(DadosLocal[4],DadosLocal[0],DadosLocal[1],DadosLocal[2],DadosLocal[3]);
-            }
-         })
-     }
+    fetch(url).then((res)=>{return res.json()}).then((dados)=>{
+        let DadosLocal = [dados.localidade,dados.bairro,dados.logradouro,
+        dados.complemento,dados.uf];
+        for(let i in DadosLocal){
+            if(DadosLocal[i] == undefined)
+                return alert("Error")
+            else
+                callback = PrintScreen(DadosLocal[4],DadosLocal[0],DadosLocal[1],DadosLocal[2],DadosLocal[3]);
+        }
+    })
 }
 function PrintScreen(Estado, Cidade, Bairro, Logradouro, Complemento){
     let Container = document.querySelector(".containerList");
