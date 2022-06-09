@@ -1,4 +1,3 @@
-// let botao = document.getElementById("Submit");
 function PuxarValores(){
     let Input = document.getElementById("InputCep").value;
     if(Input != ''){
