@@ -2,6 +2,7 @@ function PuxarValores(){
     let Input = document.getElementById("InputCep").value;
     if(Input != ''){
         let UrlFinal = `https://viacep.com.br/ws/${Input}/json`;
+        console.log(UrlFinal);
         return UrlFinal;
 
     }
@@ -13,9 +14,10 @@ function PegarCep(url,callback){
     fetch(url).then((res)=>{return res.json()}).then((dados)=>{
         let DadosLocal = [dados.localidade,dados.bairro,dados.logradouro,
         dados.complemento,dados.uf];
+        console.log(DadosLocal)
         for(let i in DadosLocal){
             if(DadosLocal[i] == undefined)
-                return alert("Error")
+                return alert("Digite um CEP válido!");
             else
                 callback = PrintScreen(DadosLocal[4],DadosLocal[0],DadosLocal[1],DadosLocal[2],DadosLocal[3]);
         }
@@ -33,6 +35,13 @@ function PrintScreen(Estado, Cidade, Bairro, Logradouro, Complemento){
     </ul>
     `
 }
+let InputClick = document.getElementById("InputCep");
+InputClick.addEventListener('keypress', function (event) {
+    if (event.keyCode !== 13) return;
+    Click(PuxarValores, PegarCep)
+});
+
+
 function Click(PuxarValores, PegarCep){
     PegarCep(PuxarValores());
     document.getElementById("InputCep").value = '';
