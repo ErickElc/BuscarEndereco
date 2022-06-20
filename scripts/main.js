@@ -16,9 +16,12 @@ InputClick.addEventListener('keypress', function (event) {
 
 function PuxarValores(){
     let Input = document.getElementById("InputCep").value;
+    let error = false;
     if(Input != ''){
-        if(Input.length < 8){
-            return alert("Digite 8 Caracteres")
+        if(Input.length <= 8){
+            error = true;
+            alert("Digite 9 Caracteres");
+            return error;
         }
         else{
             let UrlFinal = `https://viacep.com.br/ws/${Input}/json`;
@@ -26,12 +29,15 @@ function PuxarValores(){
         }
     }
     else{
-        alert('Digite Algo!')
+        alert('Digite Algo!');
     }
 }
 // Mandar o valor do input para a api(ViaCEP), e retornar os dados;
 
 function PegarCep(url,callback){
+    if(url == true){
+        return '';
+    }
     fetch(url).then((res)=>{return res.json()}).then((dados)=>{
         let DadosLocal = [dados.localidade,dados.bairro,dados.logradouro,
         dados.complemento,dados.uf]; /// ARRAY COM OS DADOS;
