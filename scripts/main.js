@@ -20,7 +20,7 @@ function PuxarValores(){
     if(Input != ''){
         if(Input.length <= 8){
             error = true;
-            alert("Digite 9 Caracteres");
+            alert("Texto Inválido");
             return error;
         }
         else{
@@ -67,7 +67,7 @@ function PrintScreen(Estado, Cidade, Bairro, Logradouro, Complemento){
 function mascara(o,f){
     v_obj = o;
     v_fun = f;
-    setTimeout("execmascara()",2);
+    setTimeout("execmascara()",1);
 }
 function execmascara(){
     v_obj.value=v_fun(v_obj.value);

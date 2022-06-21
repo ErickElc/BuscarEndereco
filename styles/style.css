@@ -11,6 +11,7 @@ body{
 }
 #title{
     margin-bottom: 30px;
+    text-align: center;
 }
 .container{
     display: flex;
@@ -66,4 +67,40 @@ body{
 }
 li{
     margin-bottom: 10px;
+}
+@media (max-width: 576px) {
+    #InputCep{
+        width: 175px;
+    }
+    #Submit{
+        width: 80px
+    }
+}
+@media (max-width: 421px) {
+    #InputCep{
+        max-width: 150px;
+    }
+    #Submit{   
+        max-width: 60px
+    }
+    .containerLista{
+        max-width: 235px;
+    }
+    .container{
+        height: 85vh;
+    }
+}
+@media (max-width:373px){
+    #InputCep{
+        max-width: 130px;
+    }
+    #Submit{   
+        max-width: 40px
+    }
+    .containerLista{
+        max-width: 195px;
+    }
+    #title{
+        font-size: 27px;
+    }
 }
